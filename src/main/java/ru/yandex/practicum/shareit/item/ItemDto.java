@@ -10,14 +10,14 @@ import lombok.Data;
 @Builder
 public class ItemDto {
     private Long id;
-    @NotBlank(message = "Название не можеть быть пустым")
+    @NotBlank(groups = AddItemValidation.class, message = "Название не может быть пустым")
     private String name;
-    @Size(max = 500,message = "Описание  может максимум 500 символов")
+    @Size(groups = {AddItemValidation.class, UpdateItemValidation.class},
+            max = 1000, message = "Максимальная длина описания — 1000 символов")
+    @NotNull(groups = AddItemValidation.class)
     private String description;
-    @NotNull
-    private Boolean available;
-
     private Long ownerId;
-
+    @NotNull(groups = AddItemValidation.class)
+    private Boolean available;
     private Long requestId;
 }

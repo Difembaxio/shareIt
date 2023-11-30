@@ -1,8 +1,7 @@
 package ru.yandex.practicum.shareit.item;
-
 public class ItemMapper {
 
-    static ItemDto toItemDto(Item item) {
+    public static ItemDto toItemDto(Item item) {
         return ItemDto.builder()
                 .id(item.getId())
                 .name(item.getName())
@@ -13,7 +12,7 @@ public class ItemMapper {
                 .build();
     }
 
-    static Item toItem(ItemDto itemDto) {
+    public static Item toItem(ItemDto itemDto) {
         return Item.builder()
                 .id(itemDto.getId())
                 .name(itemDto.getName())
@@ -21,6 +20,5 @@ public class ItemMapper {
                 .available(itemDto.getAvailable())
                 .requestId(itemDto.getRequestId())
                 .build();
-
     }
 }
